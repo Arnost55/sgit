@@ -1,55 +1,55 @@
-# Prerequisites
-*.d
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Build outputs
+bin/
+obj/
+out/
+publish/
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-# Precompiled Headers
-*.gch
-*.pch
+# JetBrains Rider
+.idea/
+*.sln.iml
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# VS Code local settings
+.vscode/
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Test results and coverage
+TestResults/
+coverage/
+coverage-results/
+*.coverage
+*.coveragexml
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# debug information files
-*.dwo
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Development.json
+
+# Local SGit test data
+.sgit/
