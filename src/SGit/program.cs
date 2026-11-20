@@ -18,7 +18,6 @@ if (File.Exists(CONF))
 }
 else
 {
-    File.Create(CONF);
     
     var settings = new SGit.settings.Settings
     {
@@ -31,6 +30,7 @@ else
         .WithNamingConvention(CamelCaseNamingConvention.Instance)
         .Build();
     var yaml = serializer.Serialize(settings);
+    Console.WriteLine("Waiting for file creation!");
     File.WriteAllText(CONF, yaml);
 
 
