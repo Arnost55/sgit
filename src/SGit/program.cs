@@ -10,7 +10,7 @@ using Settings = SGit.settings.Settings;
 using System.IO;
 using System.Diagnostics;
 
-
+// settings variable
 var settings = new Settings
 {
     FirstTime = true,
@@ -31,6 +31,7 @@ else
     CheckInstall(settings);
 
 }
+
 // yaml file writer
 static void yamlwrite(Settings settings)
 {
@@ -42,6 +43,7 @@ static void yamlwrite(Settings settings)
     File.WriteAllText(CONF, yaml);
 
 }
+
 // yaml file reader
 static SGit.settings.Settings yamlread()
 {
@@ -53,6 +55,7 @@ static SGit.settings.Settings yamlread()
     return config;
 }
 
+// find git function
 static string? FindGit()
 {
     var process = new Process();
@@ -90,3 +93,4 @@ static void CheckInstall(Settings? settings)
     }
     yamlwrite(settings);
 }
+
