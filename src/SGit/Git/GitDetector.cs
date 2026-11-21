@@ -39,7 +39,7 @@ public static class GitDetector
     // check whether Git is installed
     public static void CheckInstall(Settings? settings)
     {
-        var configread = SGit.Config.ConfigManager.Read();
+        ArgumentNullException.ThrowIfNull(settings);
         string? gitPath = FindGit();
         if (gitPath != null)
         {

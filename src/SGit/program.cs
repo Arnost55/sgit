@@ -1,16 +1,12 @@
 ﻿// Import important packages
 using System;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Serialization;
-using YamlDotNet;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 using Settings = SGit.settings.Settings;
 using System.IO;
 using System.Diagnostics;
 using SGit.Config;
-using SGit.GitDetector;
+using SGit.Git;
+using System.Net;
+
 
 // settings variable
 var settings = new Settings
@@ -23,14 +19,13 @@ var settings = new Settings
 // init the config file
 if (File.Exists(SGit.Config.ConfigManager.ConfigPath))
 {
-    SGit.GitDetector.ConfigManager.CheckInstall(settings);
+    GitDetector.CheckInstall(settings);
 }
 else
 {
 
     SGit.Config.ConfigManager.Write(settings);
-    SGit.GitDetector.ConfigManager.CheckInstall(settings);
-
+    GitDetector.CheckInstall(settings);
+    
 }
-
-
+SGit.Commands.HistoryCommand.Execute();
