@@ -9,13 +9,13 @@ using Settings = SGit.settings.Settings;
 using System.IO;
 using System.Diagnostics;
 using SGit.Config;
-namespace SGit.GitDetector;
+namespace SGit.Git;
 
 
 
-public static class ConfigManager
+public static class GitDetector
 {
-    private const string ConfigPath = "config.yaml";
+    public const string ConfigPath = "config.yaml";
     // find git function
     public static string? FindGit()
     {
