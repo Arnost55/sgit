@@ -30,6 +30,8 @@ switch (command)
     HistoryCommand.Execute();
     break;
 
+    case "install":
+        
     case "help":
     case "--help":
     case "-h":
