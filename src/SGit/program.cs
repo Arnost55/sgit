@@ -6,26 +6,51 @@ using System.Diagnostics;
 using SGit.Config;
 using SGit.Git;
 using System.Net;
+using SGit.Commands;
+using System.Collections;
 
+//write or load the settings
+var settings = ConfigManager.LoadOrCreate();
 
-// settings variable
-var settings = new Settings
+// if 0 args then we show help
+if (args.Length == 0)
 {
-    FirstTime = true,
-    GitChecked = false,
-    GitPath = "none",
-};
+    ShowHelp();
+    return;
 
-// init the config file
-if (File.Exists(SGit.Config.ConfigManager.ConfigPath))
-{
-    GitDetector.CheckInstall(settings);
 }
-else
-{
 
-    SGit.Config.ConfigManager.Write(settings);
-    GitDetector.CheckInstall(settings);
-    
+//command what we receive and their arguments
+string command = args[0].ToLowerInvariant();
+
+// diffrent command cases
+switch (command)
+{
+    case "history":
+    HistoryCommand.Execute();
+    break;
+
+    case "help":
+    case "--help":
+    case "-h":
+        ShowHelp();
+        break;
+
+    default:
+    Console.WriteLine($"Uknown command: {command}");
+    break;
 }
-SGit.Commands.HistoryCommand.Execute();
+
+// show help function
+static void ShowHelp()
+{
+    Console.WriteLine(""" 
+        SGit - Simple Git for Everyone
+        
+        Usage:
+            sgit   <command>  [arguments]
+        Commands:
+        history       Show commit history
+        help          Show this help message
+        """);
+}
