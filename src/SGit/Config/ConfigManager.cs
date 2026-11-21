@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using Settings = SGit.settings.Settings;
@@ -26,5 +27,23 @@ public static class ConfigManager
         File.WriteAllText(ConfigPath, serializer.Serialize(settings));
 
     }
+    // load or create function
+    public static Settings LoadOrCreate()
+    {
+        if (File.Exists(ConfigPath)){
+        return Read();
+        }
+        var settings = new Settings
+        {
+            FirstTime = true,
+            GitChecked = false,
+            GitPath = "none",
+
+        };
+        Write(settings);
+
+        return settings;
+    }
+    
 }
 
