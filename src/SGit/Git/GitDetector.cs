@@ -65,6 +65,7 @@ public static class GitDetector
         string? gitPath = FindGit();
         if (gitPath != null)
         {
+            settings.FirstTime = false;
             settings.GitChecked = true;
             settings.GitPath = gitPath;
             Console.WriteLine($"Git found: {gitPath}");
@@ -74,6 +75,24 @@ public static class GitDetector
             settings.GitChecked = false;
             settings.GitPath = "none";
             Console.WriteLine("Git not installed or not in path!");
+            Console.WriteLine("Do you want to install it now?");
+            Console.WriteLine("y/N default is (no)");
+            if (Console.ReadLine() == y || Console.ReadLine() == Y || Console.ReadLine() == yes)
+            {
+                GitInstall();
+
+            }
+            else if (Console.ReadLine() == n || Console.ReadLine() == N || Console.ReadLine() == no)
+            {
+                Console.WriteLine("You chose No.");
+                Console.WriteLine("Not Installing. Exiting...");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Bad answer. Exiting...");
+                break;
+            }
         }
         SGit.Config.ConfigManager.Write(settings);
     }
